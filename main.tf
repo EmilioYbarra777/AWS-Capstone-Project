@@ -27,10 +27,10 @@ module "alb" {
 
 }
 
+module "asg" {
+  source = "./asg"
 
-
-//module "ec2" {
-//    source = "./ec2"
-//    app_sg_id = var.app_sg_id
-//}
+  private_subnet_ids = var.private_subnet_ids
+  target_group_arn = module.alb.target_group_arn
+}
 

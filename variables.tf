@@ -20,7 +20,13 @@ variable "alb_sg_id" {
   description = "Security group ID for the Application Load Balancer"
 }
 
+
 variable "public_subnet_ids" {
   type        = list(string)
   description = "List of public subnet IDs for the ALB"
+}
+
+variable "private_subnet_ids" {
+  type        = list(string)
+  description = "List of private subnet IDs for the ASG"
 }

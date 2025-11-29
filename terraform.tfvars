@@ -14,6 +14,12 @@ public_subnet_ids = [
   "subnet-0482740dc50cd7dda"  // Public Subnet 2
 ]
 
+// AGS configuration
+private_subnet_ids = [
+  "subnet-0624ff10dee3597be",
+  "subnet-0abe23b636e95e4ab"
+]
+
 // App configuration
 //app_subnet_id = ""
 app_sg_id = "sg-0b9e50ca891dbef50"

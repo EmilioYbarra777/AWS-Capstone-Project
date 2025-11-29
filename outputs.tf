@@ -14,8 +14,7 @@ output "target_group_arn" {
 }
 
 
-
-# Comment out EC2 output for now
-# output "app_server_public_ip" {
-#   value = module.ec2.public_ip
-# }
+output "asg_name" {
+  value = module.asg.asg_name
+  description = "Name of the Auto Scaling Group"
+}
