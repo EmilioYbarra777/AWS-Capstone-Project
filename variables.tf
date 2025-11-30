@@ -1,7 +1,3 @@
-variable "app_sg_id" {
-  type = string
-}
-
 variable "db_sg_id" {
   type = string
 }

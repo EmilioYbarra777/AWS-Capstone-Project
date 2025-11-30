@@ -15,6 +15,6 @@ output "target_group_arn" {
 
 
 output "asg_name" {
-  value = module.asg.asg_name
+  value       = module.asg.asg_name
   description = "Name of the Auto Scaling Group"
 }

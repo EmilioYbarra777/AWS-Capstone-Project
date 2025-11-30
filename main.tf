@@ -31,6 +31,6 @@ module "asg" {
   source = "./asg"
 
   private_subnet_ids = var.private_subnet_ids
-  target_group_arn = module.alb.target_group_arn
+  target_group_arn   = module.alb.target_group_arn
 }
 
