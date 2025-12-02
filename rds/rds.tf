@@ -20,6 +20,7 @@ resource "aws_db_instance" "mysql" {
   password                = local.db_pass
   db_name                 = "countries"
   skip_final_snapshot     = true
+  multi_az                = true
 
   vpc_security_group_ids  = [var.db_sg_id]
   db_subnet_group_name    = var.db_subnet_group_name

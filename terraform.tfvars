@@ -14,7 +14,7 @@ public_subnet_ids = [
   "subnet-0482740dc50cd7dda"
 ]
 
-// AGS configuration
+// ASG configuration
 private_subnet_ids = [
   "subnet-0624ff10dee3597be",
   "subnet-0abe23b636e95e4ab"

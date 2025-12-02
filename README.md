@@ -59,9 +59,11 @@ Build a secure, highly available PHP application infrastructure that:
 - Instance Class: db.t3.micro
 - Database Name: `countries`
 - Allocated Storage: 20 GB
-- Deployment: Private DB subnets (single or multi-AZ)
+- Deployment: **Multi-AZ** (Primary in us-east-1a, Standby in us-east-1b)
+- Automatic Failover: Enabled
 - Public Access: Disabled
 - Security: Restricted to application security group only
+- Replication: Synchronous replication to standby instance
 
 **AWS Secrets Manager**
 - Secret Name: `rds-mysql-credentials`
@@ -127,43 +129,7 @@ Build a secure, highly available PHP application infrastructure that:
 
 ## Architecture Diagram
 
-```
-                                  Internet
-                                     │
-                                     ▼
-                        ┌────────────────────────┐
-                        │  Application Load      │
-                        │  Balancer (ALB)        │
-                        │  • Public Subnets      │
-                        │  • Port 80 (HTTP)      │
-                        └────────────┬───────────┘
-                                     │
-                    ┌────────────────┼────────────────┐
-                    ▼                ▼                ▼
-            ┌───────────────┐ ┌───────────────┐ ┌───────────────┐
-            │  EC2 Instance │ │  EC2 Instance │ │  EC2 Instance │
-            │  • Private    │ │  • Private    │ │  • Private    │
-            │    Subnet     │ │    Subnet     │ │    Subnet     │
-            │  • AZ 1       │ │  • AZ 2       │ │  • AZ 3       │
-            └───────┬───────┘ └───────┬───────┘ └───────┬───────┘
-                    │                 │                 │
-                    └─────────────────┼─────────────────┘
-                                      │
-                                      ▼
-                            ┌─────────────────┐
-                            │  RDS MySQL      │
-                            │  • Private      │
-                            │    DB Subnets   │
-                            │  • Port 3306    │
-                            └─────────────────┘
-                                      │
-                                      │ (credentials)
-                                      ▼
-                            ┌─────────────────┐
-                            │  AWS Secrets    │
-                            │  Manager        │
-                            └─────────────────┘
-```
+![Architecture Diagram](docs/AWS%20Capstone%20Project.drawio.png)
 
 ## Implementation Steps
 
@@ -227,8 +193,10 @@ Build a secure, highly available PHP application infrastructure that:
 
 4. **High Availability**
    - Multi-AZ deployment for fault tolerance
+   - Multi-AZ RDS with automatic failover
    - Auto Scaling replaces unhealthy instances
    - Load balancer health monitoring
+   - Cross-AZ redundancy at all tiers
 
 ## Infrastructure as Code
 
