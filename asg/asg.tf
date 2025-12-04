@@ -11,9 +11,9 @@ resource "aws_autoscaling_group" "app_asg" {
   health_check_type   = "ELB"
   health_check_grace_period = 300
   
-  min_size         = 2
-  max_size         = 4
-  desired_capacity = 2
+  min_size         = 5
+  max_size         = 10
+  desired_capacity = 5
 
   launch_template {
     id      = data.aws_launch_template.example.id
