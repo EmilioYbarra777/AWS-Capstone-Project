@@ -334,4 +334,4 @@ AWS Cloud Architecting Capstone Project
 
 ---
 
-**Last Updated**: November 2024
+**Last Updated**: December 2025
